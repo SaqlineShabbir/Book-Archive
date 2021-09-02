@@ -8,7 +8,7 @@ const searchBook = () =>{
     const error = document.getElementById('errors');
  
    
-    const url = `http://openlibrary.org/search.json?q=${searchText} `
+    const url = `https://openlibrary.org/search.json?q=${searchText} `
     
 
     fetch(url)
