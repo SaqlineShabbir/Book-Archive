@@ -21,7 +21,7 @@ const error = document.getElementById('errors');
     .then(response => response.json())
     .then(data => {displaySearchResult(data.docs)
        console.log(data.numFound)
-
+     
       if(data.numFound === 0){
         error.innerText = 'No Result Found';
       }
@@ -57,7 +57,7 @@ const displaySearchResult = docs =>{
           <img src="https://covers.openlibrary.org/b/id/${doc.cover_i}.jpg" class="card-img-top" alt="...">
           <div class="card-body">
           
-          <h5 class="card-title"> Name: ${doc.title}</h5>
+          <h5 class="card-title">Book Name: ${doc.title}</h5>
           
           <h5>Author Name: ${doc.author_name[0]}</h5>
           <h5>Publisher: ${doc.publisher[0]}</h5>
