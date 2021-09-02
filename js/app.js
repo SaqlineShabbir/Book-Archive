@@ -1,15 +1,12 @@
 const searchBook = () =>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    console.log(searchText);
+   
 
     // clear search field
     searchField.value = '';
     const error = document.getElementById('errors');
  
-  // if( searchText == ""){
-  //   error.innerText = 'search field cannot be empty'
-  // }
    
     const url = `http://openlibrary.org/search.json?q=${searchText} `
     
@@ -17,14 +14,16 @@ const searchBook = () =>{
     fetch(url)
     .then(response => response.json())
     .then(data => {displaySearchResult(data.docs)
-       console.log(data.docs)
+       console.log(data.numFound)
+
       if(data.numFound == 0){
         error.innerText = 'No Result Found';
       }
       else{
+       
         error.innerText = "";
       }
-      
+       //look i have cleared this text as i see in conceptual session but its not working
     } )
 
     
@@ -32,16 +31,16 @@ const searchBook = () =>{
 
 const displaySearchResult = docs =>{
     console.log(docs.length)
-
+  
     const resultFound = document.getElementById('result-found')
-    resultFound.innerText = ` Result Found: ${docs.length}`
+    resultFound.innerText = `Result Found ${docs.length}`
+
+
    const searchResult = document.getElementById('search-result');
    searchResult.textContent = '';
    
   
-  //  if(!docs){
-  //    console.log('not found')
-  //  }
+ 
    docs?.forEach(doc => {
        console.log(doc)
        const div = document.createElement('div');
@@ -56,7 +55,7 @@ const displaySearchResult = docs =>{
           <h5>Author Name: ${doc.author_name[0]}</h5>
           <h5>Publisher: ${doc.publisher[0]}</h5>
           <h5>First Publish Date:${doc.first_publish_year}</h5>
-          <h5>Result Found: ${docs.length}</h5>
+          
           <button type="button" class="btn btn-secondary btn-lg">Learn More</button>
     
         </div>
