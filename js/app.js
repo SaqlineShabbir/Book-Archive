@@ -1,4 +1,5 @@
 
+    const resultFound = document.getElementById('result-found')
 //error field
 const error = document.getElementById('errors');
 
@@ -10,7 +11,7 @@ const error = document.getElementById('errors');
 
     // clear search field
     searchField.value = '';
-    const error = document.getElementById('errors');
+    
  
    
     const url = `https://openlibrary.org/search.json?q=${searchText} `
@@ -21,7 +22,7 @@ const error = document.getElementById('errors');
     .then(data => {displaySearchResult(data.docs)
        console.log(data.numFound)
 
-      if(data.numFound == 0){
+      if(data.numFound === 0){
         error.innerText = 'No Result Found';
       }
       else{
