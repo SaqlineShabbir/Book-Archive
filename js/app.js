@@ -1,4 +1,9 @@
-const searchBook = () =>{
+
+//error field
+const error = document.getElementById('errors');
+
+
+ const searchBook = () =>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
    
@@ -21,9 +26,9 @@ const searchBook = () =>{
       }
       else{
        
-        error.innerText = "";
+        error.innerText = '';
       }
-       //look i have cleared this text as i see in conceptual session but its not working
+       
     } )
 
     
@@ -43,6 +48,7 @@ const displaySearchResult = docs =>{
  
    docs?.forEach(doc => {
        console.log(doc)
+       error.innerText = '';
        const div = document.createElement('div');
        div.classList.add('col');
        div.innerHTML = `
@@ -50,7 +56,7 @@ const displaySearchResult = docs =>{
           <img src="https://covers.openlibrary.org/b/id/${doc.cover_i}.jpg" class="card-img-top" alt="...">
           <div class="card-body">
           
-          <h5 class="card-title">${doc.title}</h5>
+          <h5 class="card-title"> Name: ${doc.title}</h5>
           
           <h5>Author Name: ${doc.author_name[0]}</h5>
           <h5>Publisher: ${doc.publisher[0]}</h5>
